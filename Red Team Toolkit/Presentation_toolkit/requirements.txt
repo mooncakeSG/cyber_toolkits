@@ -1,0 +1,8 @@
+# DNS Troubleshooting Presentation Toolkit Requirements
+
+# Required for enhanced versions (Windows & Linux)
+colorama>=0.4.4  # For cross-platform color support
+psutil>=5.8.0    # For system information gathering
+
+# Optional: For enhanced functionality (Linux version)
+rich>=10.0.0  # For enhanced console output (optional)

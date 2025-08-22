@@ -1,0 +1,26 @@
+title: Network Anomaly Detection
+id: 87654321-4321-4321-4321-210987654321
+description: Detects unusual network connection patterns
+author: Blue Team Toolkit
+date: 2025/08/22
+tags:
+  - attack.command_and_control
+  - attack.t1071
+logsource:
+  category: network_connection
+  product: windows
+detection:
+  selection:
+    DestinationPort:
+      - 4444
+      - 8080
+      - 8443
+    DestinationIP:
+      - '192.168.*'
+      - '10.*'
+  condition: selection
+falsepositives:
+  - Internal network communications
+  - Development environments
+level: low
+status: experimental

@@ -1,0 +1,144 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blueteam-toolkit"
+dynamic = ["version"]
+description = "A comprehensive Python-based command-line toolkit for defensive security operations"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Blue Team CLI Toolkit", email = "blueteam@example.com"}
+]
+maintainers = [
+    {name = "Blue Team CLI Toolkit", email = "blueteam@example.com"}
+]
+keywords = [
+    "security",
+    "blue-team",
+    "defense",
+    "forensics",
+    "incident-response",
+    "threat-hunting",
+    "siem",
+    "automation",
+    "cli",
+    "toolkit",
+    "cybersecurity",
+    "monitoring",
+    "detection",
+    "response"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: Security Analysts",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: System :: Systems Administration",
+    "Topic :: System :: Monitoring",
+    "Topic :: System :: Networking :: Monitoring",
+    "Topic :: Utilities",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "psutil>=5.9.0",
+    "requests>=2.28.0",
+    "PyYAML>=6.0",
+    "schedule>=1.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov>=2.0",
+    "black>=21.0",
+    "flake8>=3.8",
+    "mypy>=0.800",
+    "pre-commit>=2.0",
+]
+docs = [
+    "sphinx>=4.0",
+    "sphinx-rtd-theme>=1.0",
+    "myst-parser>=0.15",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/blueteam-toolkit"
+Documentation = "https://github.com/yourusername/blueteam-toolkit/blob/main/README.md"
+Repository = "https://github.com/yourusername/blueteam-toolkit"
+"Bug Tracker" = "https://github.com/yourusername/blueteam-toolkit/issues"
+
+[project.scripts]
+blueteam = "main:main"
+btk = "main:main"
+
+[tool.setuptools]
+packages = ["blueteam_toolkit"]
+
+[tool.setuptools.package-data]
+"blueteam_toolkit" = ["*.json", "*.yml", "*.yaml", "*.md", "*.txt"]
+
+[tool.setuptools_scm]
+write_to = "blueteam_toolkit/_version.py"
+
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["blueteam_toolkit"]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --strict-markers --strict-config"
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
