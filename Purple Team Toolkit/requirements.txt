@@ -1,0 +1,54 @@
+# Core dependencies
+requests>=2.31.0
+rich>=13.0.0
+pandas>=2.0.0
+pyyaml>=6.0
+click>=8.1.0
+colorama>=0.4.6
+
+# Network and security tools
+python-nmap>=0.7.1
+dnspython>=2.4.0
+whois>=0.9.27
+paramiko>=3.3.0
+cryptography>=41.0.0
+
+# Web and API tools
+beautifulsoup4>=4.12.0
+selenium>=4.15.0
+aiohttp>=3.8.0
+fastapi>=0.104.0
+uvicorn>=0.24.0
+
+# Data processing and visualization
+numpy>=1.24.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.17.0
+jinja2>=3.1.0
+
+# Logging and monitoring
+psutil>=5.9.0
+watchdog>=3.0.0
+elasticsearch>=8.10.0
+pyshark>=0.6.0
+
+# Reporting and output
+reportlab>=4.0.0
+weasyprint>=60.0
+markdown>=3.5.0
+
+# Testing and development
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.5.0
+
+# Optional: Dashboard dependencies
+streamlit>=1.28.0
+plotly>=5.17.0
+
+# Optional: Machine learning for advanced detection
+scikit-learn>=1.3.0
+tensorflow>=2.13.0

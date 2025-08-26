@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Purple Team Report - Basic Reconnaissance Scenario</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { background-color: #f0f0f0; padding: 20px; border-radius: 5px; }
+        .section { margin: 20px 0; }
+        .metric { display: inline-block; margin: 10px; padding: 10px; background-color: #e8f4f8; border-radius: 5px; }
+        .score { font-size: 24px; font-weight: bold; color: #2c5aa0; }
+        .coverage { font-size: 20px; color: #28a745; }
+        .warning { color: #dc3545; }
+        .success { color: #28a745; }
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .detected { background-color: #d4edda; }
+        .not-detected { background-color: #f8d7da; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Purple Team Report</h1>
+        <h2>Basic Reconnaissance Scenario</h2>
+        <p>Execution Time: 2025-08-26T11:22:41.102019</p>
+    </div>
+    
+    <div class="section">
+        <h3>Coverage Summary</h3>
+        <div class="metric">
+            <div class="score">0.0/100</div>
+            <div>Overall Score</div>
+        </div>
+        <div class="metric">
+            <div class="coverage">0.0%</div>
+            <div>Detection Coverage</div>
+        </div>
+        <div class="metric">
+            <div>3</div>
+            <div>Total Attacks</div>
+        </div>
+        <div class="metric">
+            <div>0</div>
+            <div>Detected Attacks</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h3>Correlation Results</h3>
+        <table>
+            <tr>
+                <th>Attack Technique</th>
+                <th>Expected Detection</th>
+                <th>Actual Detection</th>
+                <th>Detected</th>
+                <th>MITRE Technique</th>
+                <th>Confidence</th>
+            </tr>
+            
+            <tr class="not-detected">
+                <td>nmap_scan</td>
+                <td>port_scan_detection</td>
+                <td>None</td>
+                <td>No</td>
+                <td>T1046</td>
+                <td>30.0%</td>
+            </tr>
+            
+            <tr class="not-detected">
+                <td>dns_enumeration</td>
+                <td>dns_query_detection</td>
+                <td>None</td>
+                <td>No</td>
+                <td>T1590</td>
+                <td>30.0%</td>
+            </tr>
+            
+            <tr class="not-detected">
+                <td>whois_lookup</td>
+                <td>information_gathering</td>
+                <td>None</td>
+                <td>No</td>
+                <td>T1590</td>
+                <td>30.0%</td>
+            </tr>
+            
+        </table>
+    </div>
+    
+    
+    <div class="section">
+        <h3>Recommendations</h3>
+        <ul>
+            
+            <li class="warning">Detection coverage is below 70%. Review detection rules and monitoring coverage.</li>
+            
+            <li class="warning">3 attacks were not detected. Strengthen detection capabilities.</li>
+            
+        </ul>
+    </div>
+    
+</body>
+</html>
+        

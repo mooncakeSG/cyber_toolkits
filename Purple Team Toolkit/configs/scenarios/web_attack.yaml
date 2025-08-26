@@ -1,0 +1,50 @@
+name: "Web Application Attack Scenario"
+description: "Web application security testing including injection attacks and fuzzing"
+version: "1.0"
+author: "mooncakesg"
+
+red_team:
+  - module: "exploitation"
+    technique: "web_fuzzing"
+    target: "http://test.example.com"
+    parameters:
+      wordlist: ["admin", "login", "wp-admin", "phpmyadmin", "config", "backup"]
+      scan_directories: true
+      scan_files: true
+  
+  - module: "exploitation"
+    technique: "port_scan"
+    target: "test.example.com"
+    parameters:
+      ports: [80, 443, 8080, 8443, 22, 21]
+      scan_type: "tcp"
+
+blue_team:
+  - module: "web_monitoring"
+    detection: "web_attack_detection"
+    sources: ["web_server_logs", "waf_logs"]
+  
+  - module: "network_monitoring"
+    detection: "port_scan_detection"
+    sources: ["network_logs", "ids_logs"]
+  
+  - module: "application_monitoring"
+    detection: "suspicious_requests"
+    sources: ["application_logs"]
+
+purple_logic:
+  correlation_rules:
+    - attack: "web_fuzzing"
+      expected_detection: "web_attack_detection"
+      mitre_technique: "T1590"
+    
+    - attack: "port_scan"
+      expected_detection: "port_scan_detection"
+      mitre_technique: "T1046"
+
+safety:
+  sandbox_mode: true
+  rate_limiting: true
+  max_requests_per_second: 10
+  timeout: 600
+  allowed_targets: ["test.example.com", "localhost"]

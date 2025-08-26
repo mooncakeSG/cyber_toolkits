@@ -1,0 +1,147 @@
+{
+  "scenario_name": "Basic Reconnaissance Scenario",
+  "execution_time": "2025-08-26T11:22:41.102019",
+  "red_team": {
+    "attacks": [
+      {
+        "module": "recon",
+        "technique": "nmap_scan",
+        "target": "192.168.1.0/24",
+        "result": "AttackResult(technique='nmap_scan', target='192.168.1.0/24', success=False, data={'error': 'Nmap not available'}, timestamp=1756200158.9791255, mitre_technique='T1046', description='Nmap scan failed: nmap not available')",
+        "timestamp": 1756200158.9791255
+      },
+      {
+        "module": "recon",
+        "technique": "dns_enumeration",
+        "target": "example.com",
+        "result": "AttackResult(technique='dns_enumeration', target='example.com', success=True, data={'a_records': ['23.215.0.136', '23.192.228.80', '23.220.75.245', '23.192.228.84', '23.215.0.138', '23.220.75.232'], 'aaaa_records': ['2600:1406:5e00:6::17ce:bc12', '2600:1408:ec00:36::1736:7f24', '2600:1408:ec00:36::1736:7f31', '2600:1406:bc00:53::b81e:94ce', '2600:1406:bc00:53::b81e:94c8', '2600:1406:5e00:6::17ce:bc1b'], 'mx_records': ['0 .'], 'ns_records': ['b.iana-servers.net.', 'a.iana-servers.net.'], 'txt_records': ['\"v=spf1 -all\"', '\"_k2n1y4vw3qtb4skdx9e7dxt97qrmmq9\"'], 'subdomains': [{'subdomain': 'www', 'ip': '2.16.162.216'}]}, timestamp=1756200159.3418722, mitre_technique='T1590', description='DNS enumeration completed')",
+        "timestamp": 1756200159.3418722
+      },
+      {
+        "module": "recon",
+        "technique": "whois_lookup",
+        "target": "example.com",
+        "result": "AttackResult(technique='whois_lookup', target='example.com', success=False, data={'error': '[WinError 2] The system cannot find the file specified'}, timestamp=1756200159.3534937, mitre_technique='T1590', description='WHOIS lookup failed: [WinError 2] The system cannot find the file specified')",
+        "timestamp": 1756200159.3534937
+      }
+    ],
+    "total_attacks": 3
+  },
+  "blue_team": {
+    "detections": [],
+    "total_detections": 0
+  },
+  "purple_logic": {
+    "correlations": [
+      {
+        "attack_technique": "nmap_scan",
+        "expected_detection": "port_scan_detection",
+        "actual_detection": null,
+        "detected": false,
+        "detection_time": null,
+        "false_positive": false,
+        "false_negative": false,
+        "mitre_technique": "T1046",
+        "confidence": 0.3,
+        "details": {
+          "attack_data": {
+            "error": "Nmap not available"
+          },
+          "detection_data": []
+        }
+      },
+      {
+        "attack_technique": "dns_enumeration",
+        "expected_detection": "dns_query_detection",
+        "actual_detection": null,
+        "detected": false,
+        "detection_time": null,
+        "false_positive": false,
+        "false_negative": false,
+        "mitre_technique": "T1590",
+        "confidence": 0.3,
+        "details": {
+          "attack_data": {
+            "a_records": [
+              "23.215.0.136",
+              "23.192.228.80",
+              "23.220.75.245",
+              "23.192.228.84",
+              "23.215.0.138",
+              "23.220.75.232"
+            ],
+            "aaaa_records": [
+              "2600:1406:5e00:6::17ce:bc12",
+              "2600:1408:ec00:36::1736:7f24",
+              "2600:1408:ec00:36::1736:7f31",
+              "2600:1406:bc00:53::b81e:94ce",
+              "2600:1406:bc00:53::b81e:94c8",
+              "2600:1406:5e00:6::17ce:bc1b"
+            ],
+            "mx_records": [
+              "0 ."
+            ],
+            "ns_records": [
+              "b.iana-servers.net.",
+              "a.iana-servers.net."
+            ],
+            "txt_records": [
+              "\"v=spf1 -all\"",
+              "\"_k2n1y4vw3qtb4skdx9e7dxt97qrmmq9\""
+            ],
+            "subdomains": [
+              {
+                "subdomain": "www",
+                "ip": "2.16.162.216"
+              }
+            ]
+          },
+          "detection_data": []
+        }
+      },
+      {
+        "attack_technique": "whois_lookup",
+        "expected_detection": "information_gathering",
+        "actual_detection": null,
+        "detected": false,
+        "detection_time": null,
+        "false_positive": false,
+        "false_negative": false,
+        "mitre_technique": "T1590",
+        "confidence": 0.3,
+        "details": {
+          "attack_data": {
+            "error": "[WinError 2] The system cannot find the file specified"
+          },
+          "detection_data": []
+        }
+      }
+    ],
+    "coverage": {
+      "total_attacks": 3,
+      "detected_attacks": 0,
+      "coverage_percentage": 0.0,
+      "false_positives": 0,
+      "false_negatives": 3,
+      "accuracy": 0.0,
+      "mitre_coverage": {
+        "T1046": {
+          "total": 1,
+          "detected": 0,
+          "coverage": 0.0
+        },
+        "T1590": {
+          "total": 2,
+          "detected": 0,
+          "coverage": 0.0
+        }
+      },
+      "recommendations": [
+        "Detection coverage is below 70%. Review detection rules and monitoring coverage.",
+        "3 attacks were not detected. Strengthen detection capabilities."
+      ],
+      "score": 0.0
+    },
+    "score": 0.0
+  }
+}

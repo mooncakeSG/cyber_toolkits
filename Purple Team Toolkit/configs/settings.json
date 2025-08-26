@@ -1,0 +1,33 @@
+{
+  "sandbox_mode": true,
+  "rate_limiting": true,
+  "confirmation_required": true,
+  "full_audit_logging": true,
+  "log_level": "INFO",
+  "log_file": "logs/purple_team.log",
+  "output_directory": "reports/",
+  "plugins_directory": "plugins/",
+  "default_timeout": 30,
+  "max_retries": 3,
+  "red_team_modules": {
+    "nmap_path": "/usr/bin/nmap",
+    "scan_delay": 1,
+    "max_concurrent_scans": 5,
+    "web_fuzzing_delay": 0.5,
+    "max_web_requests": 100
+  },
+  "blue_team_modules": {
+    "log_sources": ["system_logs", "network_logs", "application_logs", "security_logs"],
+    "detection_interval": 5,
+    "alert_threshold": 3,
+    "alert_file": "logs/alerts.log",
+    "normalization_enabled": true
+  },
+  "correlation_rules": {
+    "temporal_window": 300,
+    "confidence_threshold": 0.7,
+    "mitre_mapping_enabled": true
+  },
+  "mitre_attack_mapping": true,
+  "attack_framework_version": "14.1"
+}

@@ -1,0 +1,109 @@
+{
+  "scenario_name": "Web Application Attack Scenario",
+  "execution_time": "2025-08-26T11:24:37.257118",
+  "red_team": {
+    "attacks": [
+      {
+        "module": "exploitation",
+        "technique": "web_fuzzing",
+        "target": "http://test.example.com",
+        "result": "AttackResult(technique='web_fuzzing', target='http://test.example.com', success=True, data={'found_paths': [], 'status_codes': {}, 'errors': ['Error testing admin: HTTPConnectionPool(host=\\'test.example.com\\', port=80): Max retries exceeded with url: /admin (Caused by NameResolutionError(\"<urllib3.connection.HTTPConnection object at 0x000001FB065D3E90>: Failed to resolve \\'test.example.com\\' ([Errno 11001] getaddrinfo failed)\"))', 'Error testing login: HTTPConnectionPool(host=\\'test.example.com\\', port=80): Max retries exceeded with url: /login (Caused by NameResolutionError(\"<urllib3.connection.HTTPConnection object at 0x000001FB09D9BD10>: Failed to resolve \\'test.example.com\\' ([Errno 11001] getaddrinfo failed)\"))', 'Error testing wp-admin: HTTPConnectionPool(host=\\'test.example.com\\', port=80): Max retries exceeded with url: /wp-admin (Caused by NameResolutionError(\"<urllib3.connection.HTTPConnection object at 0x000001FB09D9A7D0>: Failed to resolve \\'test.example.com\\' ([Errno 11001] getaddrinfo failed)\"))', 'Error testing phpmyadmin: HTTPConnectionPool(host=\\'test.example.com\\', port=80): Max retries exceeded with url: /phpmyadmin (Caused by NameResolutionError(\"<urllib3.connection.HTTPConnection object at 0x000001FB09D98CD0>: Failed to resolve \\'test.example.com\\' ([Errno 11001] getaddrinfo failed)\"))', 'Error testing config: HTTPConnectionPool(host=\\'test.example.com\\', port=80): Max retries exceeded with url: /config (Caused by NameResolutionError(\"<urllib3.connection.HTTPConnection object at 0x000001FB09DB1E90>: Failed to resolve \\'test.example.com\\' ([Errno 11001] getaddrinfo failed)\"))', 'Error testing backup: HTTPConnectionPool(host=\\'test.example.com\\', port=80): Max retries exceeded with url: /backup (Caused by NameResolutionError(\"<urllib3.connection.HTTPConnection object at 0x000001FB09DB3FD0>: Failed to resolve \\'test.example.com\\' ([Errno 11001] getaddrinfo failed)\"))']}, timestamp=1756200277.2226076, mitre_technique='T1590', description='Web fuzzing completed')",
+        "timestamp": 1756200277.2226076
+      },
+      {
+        "module": "exploitation",
+        "technique": "port_scan",
+        "target": "test.example.com",
+        "result": "AttackResult(technique='port_scan', target='test.example.com', success=True, data={'open_ports': [], 'closed_ports': [], 'filtered_ports': [8080, 80, 21, 8443, 22, 443]}, timestamp=1756200277.2258248, mitre_technique='T1046', description='Port scan completed')",
+        "timestamp": 1756200277.2258248
+      }
+    ],
+    "total_attacks": 2
+  },
+  "blue_team": {
+    "detections": [],
+    "total_detections": 0
+  },
+  "purple_logic": {
+    "correlations": [
+      {
+        "attack_technique": "web_fuzzing",
+        "expected_detection": "web_attack_detection",
+        "actual_detection": null,
+        "detected": false,
+        "detection_time": null,
+        "false_positive": false,
+        "false_negative": false,
+        "mitre_technique": "T1590",
+        "confidence": 0.3,
+        "details": {
+          "attack_data": {
+            "found_paths": [],
+            "status_codes": {},
+            "errors": [
+              "Error testing admin: HTTPConnectionPool(host='test.example.com', port=80): Max retries exceeded with url: /admin (Caused by NameResolutionError(\"<urllib3.connection.HTTPConnection object at 0x000001FB065D3E90>: Failed to resolve 'test.example.com' ([Errno 11001] getaddrinfo failed)\"))",
+              "Error testing login: HTTPConnectionPool(host='test.example.com', port=80): Max retries exceeded with url: /login (Caused by NameResolutionError(\"<urllib3.connection.HTTPConnection object at 0x000001FB09D9BD10>: Failed to resolve 'test.example.com' ([Errno 11001] getaddrinfo failed)\"))",
+              "Error testing wp-admin: HTTPConnectionPool(host='test.example.com', port=80): Max retries exceeded with url: /wp-admin (Caused by NameResolutionError(\"<urllib3.connection.HTTPConnection object at 0x000001FB09D9A7D0>: Failed to resolve 'test.example.com' ([Errno 11001] getaddrinfo failed)\"))",
+              "Error testing phpmyadmin: HTTPConnectionPool(host='test.example.com', port=80): Max retries exceeded with url: /phpmyadmin (Caused by NameResolutionError(\"<urllib3.connection.HTTPConnection object at 0x000001FB09D98CD0>: Failed to resolve 'test.example.com' ([Errno 11001] getaddrinfo failed)\"))",
+              "Error testing config: HTTPConnectionPool(host='test.example.com', port=80): Max retries exceeded with url: /config (Caused by NameResolutionError(\"<urllib3.connection.HTTPConnection object at 0x000001FB09DB1E90>: Failed to resolve 'test.example.com' ([Errno 11001] getaddrinfo failed)\"))",
+              "Error testing backup: HTTPConnectionPool(host='test.example.com', port=80): Max retries exceeded with url: /backup (Caused by NameResolutionError(\"<urllib3.connection.HTTPConnection object at 0x000001FB09DB3FD0>: Failed to resolve 'test.example.com' ([Errno 11001] getaddrinfo failed)\"))"
+            ]
+          },
+          "detection_data": []
+        }
+      },
+      {
+        "attack_technique": "port_scan",
+        "expected_detection": "port_scan_detection",
+        "actual_detection": null,
+        "detected": false,
+        "detection_time": null,
+        "false_positive": false,
+        "false_negative": false,
+        "mitre_technique": "T1046",
+        "confidence": 0.3,
+        "details": {
+          "attack_data": {
+            "open_ports": [],
+            "closed_ports": [],
+            "filtered_ports": [
+              8080,
+              80,
+              21,
+              8443,
+              22,
+              443
+            ]
+          },
+          "detection_data": []
+        }
+      }
+    ],
+    "coverage": {
+      "total_attacks": 2,
+      "detected_attacks": 0,
+      "coverage_percentage": 0.0,
+      "false_positives": 0,
+      "false_negatives": 2,
+      "accuracy": 0.0,
+      "mitre_coverage": {
+        "T1590": {
+          "total": 1,
+          "detected": 0,
+          "coverage": 0.0
+        },
+        "T1046": {
+          "total": 1,
+          "detected": 0,
+          "coverage": 0.0
+        }
+      },
+      "recommendations": [
+        "Detection coverage is below 70%. Review detection rules and monitoring coverage.",
+        "2 attacks were not detected. Strengthen detection capabilities."
+      ],
+      "score": 0.0
+    },
+    "score": 0.0
+  }
+}

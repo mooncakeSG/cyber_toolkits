@@ -1,0 +1,52 @@
+name: "Basic Reconnaissance Scenario"
+description: "Network discovery and enumeration testing"
+version: "1.0"
+author: "mooncakesg"
+
+red_team:
+  - module: "recon"
+    technique: "nmap_scan"
+    target: "192.168.1.0/24"
+    parameters:
+      scan_type: "basic"
+      ports: "22,80,443,8080"
+  
+  - module: "recon"
+    technique: "dns_enumeration"
+    target: "example.com"
+    parameters:
+      record_types: ["A", "MX", "NS", "TXT"]
+  
+  - module: "recon"
+    technique: "whois_lookup"
+    target: "example.com"
+    parameters: {}
+
+blue_team:
+  - module: "network_monitoring"
+    detection: "port_scan_detection"
+    sources: ["network_logs", "firewall_logs"]
+  
+  - module: "system_monitoring"
+    detection: "suspicious_activity"
+    sources: ["system_logs"]
+
+purple_logic:
+  correlation_rules:
+    - attack: "nmap_scan"
+      expected_detection: "port_scan_detection"
+      mitre_technique: "T1046"
+    
+    - attack: "dns_enumeration"
+      expected_detection: "dns_query_detection"
+      mitre_technique: "T1590"
+    
+    - attack: "whois_lookup"
+      expected_detection: "information_gathering"
+      mitre_technique: "T1590"
+
+safety:
+  sandbox_mode: true
+  rate_limiting: true
+  max_targets: 10
+  timeout: 300
