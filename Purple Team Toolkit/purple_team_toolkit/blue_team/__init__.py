@@ -12,11 +12,12 @@ from .normalization import EventNormalizer
 class BlueTeamModule:
     """Combined Blue Team module providing all defensive monitoring capabilities."""
     
-    def __init__(self):
-        self.log_collector = LogCollector()
-        self.detection_engine = DetectionEngine()
-        self.alert_manager = AlertManager()
-        self.event_normalizer = EventNormalizer()
+    def __init__(self, config=None):
+        self.config = config or {}
+        self.log_collector = LogCollector(self.config)
+        self.detection_engine = DetectionEngine(self.config)
+        self.alert_manager = AlertManager(self.config)
+        self.event_normalizer = EventNormalizer(self.config)
 
 __all__ = [
     "LogCollector",

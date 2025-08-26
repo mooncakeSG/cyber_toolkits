@@ -12,11 +12,12 @@ from .payloads import PayloadManager
 class RedTeamModule:
     """Combined Red Team module providing all attack simulation capabilities."""
     
-    def __init__(self):
-        self.reconnaissance = ReconnaissanceModule()
-        self.exploitation = ExploitationModule()
-        self.post_exploitation = PostExploitationModule()
-        self.payload_manager = PayloadManager()
+    def __init__(self, config=None):
+        self.config = config or {}
+        self.reconnaissance = ReconnaissanceModule(self.config)
+        self.exploitation = ExploitationModule(self.config)
+        self.post_exploitation = PostExploitationModule(self.config)
+        self.payload_manager = PayloadManager(self.config)
 
 __all__ = [
     "ReconnaissanceModule",

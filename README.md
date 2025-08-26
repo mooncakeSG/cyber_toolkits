@@ -1,12 +1,13 @@
-# Cyber Security Toolkits 🛡️⚔️
+# Cyber Security Toolkits 🛡️⚔️🟣
 
-A comprehensive collection of offensive and defensive cybersecurity tools designed for educational purposes and authorized security testing. This repository contains two specialized toolkits: a **Blue Team Toolkit** for defensive security operations and a **Red Team Toolkit** for penetration testing and offensive security.
+A comprehensive collection of offensive, defensive, and purple team cybersecurity tools designed for educational purposes and authorized security testing. This repository contains three specialized toolkits: a **Blue Team Toolkit** for defensive security operations, a **Red Team Toolkit** for penetration testing and offensive security, and a **Purple Team Toolkit** for attack-defense correlation and testing.
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/yourusername/cyber-security-toolkits)
 [![Blue Team](https://img.shields.io/badge/Blue%20Team-Complete-brightgreen.svg)](https://github.com/yourusername/cyber-security-toolkits/tree/main/Blueteam%20Toolkit)
 [![Red Team](https://img.shields.io/badge/Red%20Team-v2.8-orange.svg)](https://github.com/yourusername/cyber-security-toolkits/tree/main/Red%20Team%20Toolkit)
+[![Purple Team](https://img.shields.io/badge/Purple%20Team-CLI%20Ready-purple.svg)](https://github.com/yourusername/cyber-security-toolkits/tree/main/Purple%20Team%20Toolkit)
 
 ## 📋 Table of Contents
 
@@ -14,21 +15,23 @@ A comprehensive collection of offensive and defensive cybersecurity tools design
 - [Toolkits](#toolkits)
   - [Blue Team Toolkit](#blue-team-toolkit)
   - [Red Team Toolkit](#red-team-toolkit)
+  - [Purple Team Toolkit](#purple-team-toolkit)
 - [Quick Start](#quick-start)
 - [Installation](#installation)
 - [Usage Examples](#usage-examples)
-- [Security &amp; Ethics](#security--ethics)
+- [Security & Ethics](#security--ethics)
 - [Contributing](#contributing)
 - [License](#license)
 
 ## 🎯 Overview
 
-This repository contains two comprehensive cybersecurity toolkits designed for different aspects of security operations:
+This repository contains three comprehensive cybersecurity toolkits designed for different aspects of security operations:
 
 - **🛡️ Blue Team Toolkit**: Defensive security operations, incident response, and threat hunting
 - **⚔️ Red Team Toolkit**: Penetration testing, vulnerability assessment, and offensive security
+- **🟣 Purple Team Toolkit**: Attack-defense correlation, scenario testing, and coverage analysis
 
-Both toolkits are designed with modularity, extensibility, and professional-grade features in mind.
+All toolkits are designed with modularity, extensibility, and professional-grade features in mind, with a focus on CLI-based operations for better performance and security.
 
 ## 🛠️ Toolkits
 
@@ -123,6 +126,61 @@ python red_team_toolkit.py
 
 **[📖 Full Red Team Documentation](Red%20Team%20Toolkit/README.md)**
 
+---
+
+### 🟣 Purple Team Toolkit
+
+**Status**: ✅ **CLI Production Ready** - Comprehensive attack-defense correlation framework
+
+A unified CLI-based cybersecurity framework that integrates Red Team, Blue Team, and Purple Team operations for comprehensive security testing and correlation analysis.
+
+#### 🚀 Key Features
+
+- **🔄 Attack-Defense Correlation** - Real-time mapping of attacks to detections
+- **📊 MITRE ATT&CK Integration** - Framework-based technique testing and coverage analysis
+- **🎯 Scenario Execution** - Complete attack-defense scenario testing
+- **📈 Coverage Analysis** - Detection gap identification and reporting
+- **🛡️ Safety Controls** - Sandbox mode, confirmation prompts, rate limiting
+- **📋 Rich CLI Interface** - Beautiful terminal output with progress indicators
+- **📊 Multi-Format Reporting** - HTML, PDF, JSON, CSV report generation
+- **🔧 Extensible Architecture** - Plugin system and custom scenarios
+
+#### 📊 Statistics
+
+- **15+ CLI Commands** across all toolkits
+- **3 Integrated Modules** (Red, Blue, Purple Team)
+- **Rich Terminal UI** with color-coded output
+- **Comprehensive Documentation** with usage guides
+- **Safety Features** including sandbox mode
+
+#### 🎯 Use Cases
+
+```bash
+# Check toolkit status
+python purple_cli.py status
+
+# List available scenarios
+python purple_cli.py list-scenarios
+
+# Execute full scenario
+python purple_cli.py run-scenario -s configs/scenarios/basic_recon.yaml --sandbox
+
+# Red Team reconnaissance
+python purple_cli.py red-team recon -t target.com --scan-type full
+
+# Blue Team monitoring
+python purple_cli.py blue-team monitor -d 3600 -o alerts.json
+
+# Coverage analysis
+python purple_cli.py analyze -t target.com --techniques T1046 T1071 T1059
+
+# Generate reports
+python purple_cli.py report -f html -o reports/assessment.html
+```
+
+**[📖 Full Purple Team Documentation](Purple%20Team%20Toolkit/README.md)**
+**[📖 CLI Usage Guide](Purple%20Team%20Toolkit/CLI_GUIDE.md)**
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -145,6 +203,10 @@ pip install -r requirements.txt
 # Install Red Team Toolkit
 cd "../Red Team Toolkit"
 pip install -r requirements.txt
+
+# Install Purple Team Toolkit
+cd "../Purple Team Toolkit"
+pip install -r requirements.txt
 ```
 
 ### Basic Usage
@@ -164,6 +226,15 @@ python main.py hunt --technique T1053
 cd "Red Team Toolkit"
 python red_team_toolkit.py
 # Interactive menu-driven interface
+```
+
+#### Purple Team Toolkit
+
+```bash
+cd "Purple Team Toolkit"
+python purple_cli.py --help
+python purple_cli.py status
+python purple_cli.py list-scenarios
 ```
 
 ## 📦 Installation
@@ -200,6 +271,21 @@ python red_team_toolkit.py
 python test_red_team_toolkit.py
 ```
 
+#### Purple Team Toolkit
+
+```bash
+cd "Purple Team Toolkit"
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Check toolkit status
+python purple_cli.py status
+
+# Run a basic scenario (safe mode)
+python purple_cli.py run-scenario -s configs/scenarios/basic_recon.yaml --sandbox
+```
+
 ### Dependencies
 
 #### Blue Team Toolkit
@@ -220,6 +306,17 @@ python test_red_team_toolkit.py
 - `matplotlib>=3.5.0` - Graph generation
 - `pandas>=1.3.0` - Data analysis
 - And 15+ additional dependencies
+
+#### Purple Team Toolkit
+
+- `click>=8.1.0` - CLI framework
+- `rich>=13.0.0` - Rich terminal output
+- `pyyaml>=6.0` - YAML configuration
+- `pandas>=2.0.0` - Data analysis
+- `plotly>=5.15.0` - Interactive visualizations
+- `jinja2>=3.0.0` - Report templates
+- `reportlab>=4.0.0` - PDF generation
+- And 10+ additional dependencies
 
 ## 🎯 Usage Examples
 
@@ -297,6 +394,44 @@ python red_team_toolkit.py
 # Enter wordlist: /path/to/wordlist.txt
 ```
 
+### Purple Team Operations
+
+#### Complete Scenario Testing
+
+```bash
+# Run a full attack-defense scenario
+python purple_cli.py run-scenario -s configs/scenarios/web_attack.yaml --sandbox
+
+# Execute with custom output
+python purple_cli.py run-scenario -s configs/scenarios/post_exploitation.yaml -o results/ --parallel
+```
+
+#### Individual Toolkit Operations
+
+```bash
+# Red Team reconnaissance
+python purple_cli.py red-team recon -t target.com --scan-type full -o recon.json
+
+# Blue Team monitoring
+python purple_cli.py blue-team monitor -d 1800 -o alerts.json
+
+# Threat hunting
+python purple_cli.py blue-team hunt -q "process.name == 'powershell.exe'"
+```
+
+#### Analysis and Reporting
+
+```bash
+# Coverage analysis
+python purple_cli.py analyze -t target.com --techniques T1046 T1071 T1059
+
+# Generate comprehensive report
+python purple_cli.py report -f html -o reports/security_assessment.html
+
+# Generate PDF report
+python purple_cli.py report -f pdf -o reports/security_assessment.pdf
+```
+
 ## 🛡️ Security & Ethics
 
 ### ⚠️ Important Disclaimers
@@ -321,6 +456,13 @@ python red_team_toolkit.py
 - **Resource Monitoring**: Real-time system resource tracking
 - **Dangerous Tools**: Clear warnings and information about potentially harmful operations
 
+#### Purple Team Toolkit
+
+- **Sandbox Mode**: Safe testing environment for all operations
+- **Confirmation Prompts**: Destructive operations require explicit approval
+- **Rate Limiting**: Automatic protection against overwhelming targets
+- **Audit Logging**: Complete operation tracking and documentation
+
 ### 🎓 Educational Value
 
 These toolkits provide hands-on experience with:
@@ -328,6 +470,7 @@ These toolkits provide hands-on experience with:
 - **Incident Response Procedures**
 - **Threat Hunting Techniques**
 - **Penetration Testing Methodologies**
+- **Attack-Defense Correlation**
 - **Security Tool Development**
 - **Automation and Orchestration**
 - **Reporting and Documentation**
@@ -351,6 +494,10 @@ pip install -e .
 # Red Team Toolkit
 cd "../Red Team Toolkit"
 pip install -r requirements.txt
+
+# Purple Team Toolkit
+cd "../Purple Team Toolkit"
+pip install -r requirements.txt
 ```
 
 ### Contribution Areas
@@ -360,6 +507,7 @@ pip install -r requirements.txt
 - **Documentation**: Improve guides and examples
 - **Testing**: Expand test coverage
 - **Security**: Enhance safety features
+- **CLI Improvements**: Enhance command-line interfaces
 
 ### Code Standards
 
@@ -379,6 +527,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 - **[Blue Team Toolkit Documentation](Blueteam%20Toolkit/README.md)**
 - **[Red Team Toolkit Documentation](Red%20Team%20Toolkit/README.md)**
+- **[Purple Team Toolkit Documentation](Purple%20Team%20Toolkit/README.md)**
+- **[Purple Team CLI Guide](Purple%20Team%20Toolkit/CLI_GUIDE.md)**
 - **[Installation Guide](Blueteam%20Toolkit/INSTALL.md)**
 
 ### Issues & Discussions
@@ -408,6 +558,14 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - ✅ **Comprehensive Testing** - 24 test cases with full coverage
 - ✅ **Advanced Reporting** - Multiple format support with visualizations
 
+### Purple Team Toolkit
+
+- ✅ **CLI Production Ready** - Comprehensive attack-defense correlation
+- ✅ **15+ CLI Commands** - Full toolkit integration
+- ✅ **Rich Terminal UI** - Beautiful, informative output
+- ✅ **Safety Features** - Sandbox mode and confirmation prompts
+- ✅ **Complete Documentation** - Usage guides and examples
+
 ## 🎉 Acknowledgments
 
 - **MITRE ATT&CK** framework for threat hunting techniques
@@ -417,6 +575,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
-**🛡️⚔️ Cyber Security Toolkits** - Empowering security professionals with comprehensive offensive and defensive tools.
+**🛡️⚔️🟣 Cyber Security Toolkits** - Empowering security professionals with comprehensive offensive, defensive, and purple team tools.
 
 **Remember**: Always use these tools responsibly, ethically, and with proper authorization. 🎓
